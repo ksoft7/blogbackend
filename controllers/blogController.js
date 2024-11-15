@@ -8,6 +8,34 @@ const blogValidationSchema = Joi.object({
   shortdesc: Joi.string().required(),
 });
 
+// export const createBlog = async (req, res) => {
+//   try {
+//     const { title, description, shortdesc } = req.body;
+
+//     // Get the image URL if a file was uploaded
+//     const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
+
+//     // Create a new inspection document
+//     const newBlog = new Blog({
+//       description,
+//       imageUrl,
+//       title,
+//       shortdesc,
+//     });
+
+//     // Save to the database
+//     const savedBlog = await newBlog.save();
+
+//     res.status(201).json({
+//       message: "Inspection created successfully",
+//       data: savedBlog,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: error.message });
+//   }
+// };
+
 // Create a new blog post
 export const createBlog = async (req, res) => {
   const { error } = blogValidationSchema.validate(req.body);
